@@ -12,7 +12,7 @@
 - **Repository:** {{REPO_NAME}}
 - **Default Branch:** {{DEFAULT_BRANCH}}
 - **Created On:** {{CREATED_DATE}}
-- **Last Updated:** {{LAST_UPDATED}}
+- **Last Updated:** 2026-11-07
 
 ---
 
