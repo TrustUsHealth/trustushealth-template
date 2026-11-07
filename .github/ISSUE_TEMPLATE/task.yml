@@ -1,0 +1,21 @@
+name: Task
+description: General task, refactor, or tech improvement
+title: "[Task] Short title"
+labels: ["type:task"]
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: What needs to be done?
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why is this needed?
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected Outcome

@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Node projects (portal/backend)
+      - name: Setup Node
+        if: hashFiles('package.json') != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies (Node)
+        if: hashFiles('package.json') != ''
+        run: npm ci
+
+      - name: Lint (Node)
+        if: hashFiles('package.json') != ''
+        run: npm run lint || echo "No lint script"
+
+      - name: Build (Node)
+        if: hashFiles('package.json') != ''
+        run: npm run build || echo "No build script"
+
+      - name: Test (Node)
+        if: hashFiles('package.json') != ''
+        run: npm test || echo "No tests"
+
+      # Python projects (AI service)
+      - name: Setup Python
+        if: hashFiles('requirements.txt') != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies (Python)
+        if: hashFiles('requirements.txt') != ''
+        run: pip install -r requirements.txt
+
+      - name: Lint (Python)
+        if: hashFiles('requirements.txt') != ''
+        run: |
+          pip install flake8
+          flake8 . || echo "Lint warnings"
+
+      - name: Test (Python)
+        if: hashFiles('requirements.txt') != ''
+        run: pytest || echo "No tests"

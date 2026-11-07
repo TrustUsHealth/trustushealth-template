@@ -1,0 +1,68 @@
+name: Setup Labels
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  issues: write
+
+jobs:
+  labels:
+    if: vars.IS_TEMPLATE != 'true'
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = [
+              // Type
+              { name: "type:feature", color: "0E8A16" },
+              { name: "type:bug", color: "D73A4A" },
+              { name: "type:enhancement", color: "A2EEEF" },
+              { name: "type:task", color: "C2E0C6" },
+              { name: "type:refactor", color: "FBCA04" },
+              { name: "type:docs", color: "0075CA" },
+              { name: "type:test", color: "5319E7" },
+              { name: "type:chore", color: "BFDADC" },
+
+              // Priority
+              { name: "priority:high", color: "B60205" },
+              { name: "priority:medium", color: "FBCA04" },
+              { name: "priority:low", color: "0E8A16" },
+
+              // Status
+              { name: "status:blocked", color: "D93F0B" },
+              { name: "status:ready", color: "0E8A16" },
+              { name: "status:in-progress", color: "FBCA04" },
+              { name: "status:review", color: "5319E7" },
+              { name: "status:done", color: "1D76DB" },
+
+              // Misc
+              { name: "good first issue", color: "7057FF" },
+              { name: "help wanted", color: "008672" },
+              { name: "duplicate", color: "CFD3D7" },
+              { name: "invalid", color: "E4E669" },
+              { name: "wontfix", color: "FFFFFF" }
+            ];
+
+            for (const label of labels) {
+              try {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label.name,
+                  color: label.color
+                });
+              } catch (error) {
+                if (error.status === 422) {
+                  console.log(`Label already exists: ${label.name}`);
+                } else {
+                  throw error;
+                }
+              }
+            }

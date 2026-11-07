@@ -1,0 +1,40 @@
+name: Feature
+description: Create a new feature or enhancement
+title: "[Feature] Short title"
+labels: ["type:feature"]
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be built?
+      placeholder: Describe the feature clearly
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      placeholder: |
+        - [ ] Condition 1
+        - [ ] Condition 2
+        - [ ] Condition 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Any related issues or repos?
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - High
+        - Medium
+        - Low
