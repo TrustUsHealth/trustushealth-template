@@ -1,17 +1,17 @@
-# trustushealth-template
+# {{REPO_NAME}}
 
 ## Overview
-Repository created from template.
+{{REPO_DESCRIPTION}}
 
 ---
 
 ## Repository Details
 
-- **Owner:** TrustUsHealth
-- **Repository:** trustushealth-template
-- **Default Branch:** main
-- **Created On:** 2026-11-07
-- **Last Updated:** 2026-11-07
+- **Owner:** {{OWNER}}
+- **Repository:** {{REPO_NAME}}
+- **Default Branch:** {{DEFAULT_BRANCH}}
+- **Created On:** {{CREATED_DATE}}
+- **Last Updated:** {{LAST_UPDATED}}
 
 ---
 
@@ -19,8 +19,8 @@ Repository created from template.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/TrustUsHealth/trustushealth-template.git
-   cd trustushealth-template
+   git clone https://github.com/{{OWNER}}/{{REPO_NAME}}.git
+   cd {{REPO_NAME}}
    ```
 
 2. Set up your environment as required.
