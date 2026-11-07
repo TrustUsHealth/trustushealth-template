@@ -43,7 +43,7 @@ jobs:
           git push
 
   update-last-updated:
-    if: vars.IS_TEMPLATE != 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: vars.IS_TEMPLATE != 'true' && github.repository != '1shChheda/trustushealth-template' && github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo

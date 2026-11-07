@@ -7,12 +7,11 @@
 
 ## Repository Details
 
-- **Organization:** TrustUs Health
 - **Owner:** {{OWNER}}
 - **Repository:** {{REPO_NAME}}
 - **Default Branch:** {{DEFAULT_BRANCH}}
 - **Created On:** {{CREATED_DATE}}
-- **Last Updated:** 2026-11-07
+- **Last Updated:** {{LAST_UPDATED}}
 
 ---
 
